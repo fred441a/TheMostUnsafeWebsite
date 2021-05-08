@@ -1,0 +1,41 @@
+{
+  "name": "themostunsafewebsite",
+  "version": "1.0.0",
+  "description": "This Website leaks all of your data",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js",
+    "build_vue": "npm --prefix ./frontend/vue run build",
+    "Serve_vue": "npm --prefix ./frontend/vue run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fred441a/TheMostUnsafeWebsite.git"
+  },
+  "keywords": [
+    "funny",
+    "meme",
+    "joke",
+    "unsafe"
+  ],
+  "author": "Frederik Hansen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fred441a/TheMostUnsafeWebsite/issues"
+  },
+  "homepage": "https://github.com/fred441a/TheMostUnsafeWebsite#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0"
+  }
+}

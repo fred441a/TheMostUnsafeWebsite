@@ -26,11 +26,29 @@ var Production
 
 if (process.env.Production == "NO") {
   Production = False;
+
+  app.use(cors({
+    origin: [
+      'http://localhost:3000',
+      'https://localhost:8080'
+    ],
+    credentials: true,
+    exposedHeaders: ['set-cookie']
+  }));
+
 }
 
 
 if (process.env.Production == "NO") {
   Production = True;
+  app.use(cors({
+    origin: [
+      'http://unsafe.verymanygames.com',
+      'https://unsafe.verymanygames.com'
+    ],
+    credentials: true,
+    exposedHeaders: ['set-cookie']
+  }));
 }
 
 //  Session setup

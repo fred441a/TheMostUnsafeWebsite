@@ -11,9 +11,22 @@
       </b-autocomplete>
     </b-field>
     <ul class="messagebox">
-      <li v-for="message in Messages" v-bind:key="message.createdAt">
-        {{ message.Sender }} : {{ message.Message }}
-      </li>
+      <div
+        class="columns"
+        v-for="message in Messages"
+        v-bind:key="message.createdAt"
+      >
+        <div v-if="Person === message.Sender" class="column is-4">
+          <div class="notification is-info" style="margin: 10px">
+            {{ message.Sender }} : {{ message.Message }}
+          </div>
+        </div>
+        <div v-else class="column is-4 is-offset-8">
+          <div class="notification is-info-light" style="margin: 10px">
+            {{ message.Sender }} : {{ message.Message }}
+          </div>
+        </div>
+      </div>
     </ul>
     <div class="columns">
       <div class="column is-11">
@@ -72,11 +85,6 @@ export default {
       const vm = this
 
       if (vm.Person === '') {
-        vm.Messages = {
-          Username: 'Frederik',
-          Message: 'Welcome to the most fucken unsafe website on the planet!',
-          createdAt: '2021-05-12T19:52:28.884Z'
-        }
         return
       }
 

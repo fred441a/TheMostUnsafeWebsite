@@ -55,6 +55,13 @@ export default {
           })
           Router.push('/FrontPage')
         }
+        if (this.readyState === 4 && this.status === 401) {
+          buefy.toast.open({
+            message: 'Wrong username or password',
+            position: 'is-bottom',
+            type: 'is-danger'
+          })
+        }
       }
 
       xhttp.open('POST', '/api/login')

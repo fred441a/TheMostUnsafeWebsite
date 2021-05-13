@@ -1,28 +1,16 @@
 <template>
   <div style="height: 100%">
-    <b-field label="Find a friend">
-      <b-autocomplete
-        :data="data"
-        :loading="Loading"
-        field="Username"
-        @typing="GetData"
-        @select="(option) => (Person = option.Username)"
-      >
-      </b-autocomplete>
-    </b-field>
     <ul class="messagebox">
       <li v-for="message in Messages" v-bind:key="message.createdAt">
-        {{ message.Sender }} : {{ message.Message }}
+        {{message.Sender}} : {{ message.Message }}
       </li>
     </ul>
     <div class="columns">
       <div class="column is-11">
-        <b-input v-model="Message"></b-input>
+        <b-input v-model="Message" ></b-input>
       </div>
       <div class="column">
-        <b-button type="is-primary" v-on:click="SendMessage"
-          ><b-icon icon="send"></b-icon>
-        </b-button>
+        <b-button type="is-primary"  v-on:click="SendMessage"><b-icon icon="send"></b-icon> </b-button>
       </div>
     </div>
   </div>
@@ -40,48 +28,16 @@
 export default {
   data () {
     return {
-      data: [],
-      Loading: false,
       Messages: [],
-      Message: '',
-      Person: ''
+      Message: ''
     }
   },
+
   methods: {
-    GetData: function (Event) {
-      const vm = this
-      const data = JSON.stringify({
-        Query: Event
-      })
-
-      var xhttp = new XMLHttpRequest()
-
-      xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-          vm.data = JSON.parse(this.response)
-          vm.loading = false
-        }
-      }
-
-      xhttp.open('POST', '/api/Query')
-      xhttp.setRequestHeader('Content-type', 'application/json')
-      xhttp.send(data)
-      vm.loading = true
-    },
     GetMessages () {
       const vm = this
-
-      if (vm.Person === '') {
-        vm.Messages = {
-          Username: 'Frederik',
-          Message: 'Welcome to the most fucken unsafe website on the planet!',
-          createdAt: '2021-05-12T19:52:28.884Z'
-        }
-        return
-      }
-
       const data = JSON.stringify({
-        Username: vm.Person
+        Username: vm.$route.params.Username
       })
 
       var xhttp = new XMLHttpRequest()
@@ -99,7 +55,7 @@ export default {
     SendMessage () {
       const vm = this
       const data = JSON.stringify({
-        Receiver: vm.Person,
+        Receiver: vm.$route.params.Username,
         Message: vm.Message
       })
 

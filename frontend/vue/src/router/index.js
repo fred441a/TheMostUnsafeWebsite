@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import FrontPage from '../views/FrontPage.vue'
+import Messages from '../views/Messages'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,11 @@ const routes = [
     path: '/FrontPage',
     name: 'FrontPage',
     component: FrontPage
+  },
+  {
+    path: '/Messages/:Username',
+    name: 'Messages',
+    component: Messages
   }
 
 ]

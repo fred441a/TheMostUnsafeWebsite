@@ -39,7 +39,7 @@ if (process.env.Production == "NO") {
 }
 
 
-if (process.env.Production == "NO") {
+if (process.env.Production == "YES") {
   Production = True;
   app.use(cors({
     origin: [
